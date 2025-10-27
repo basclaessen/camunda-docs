@@ -66,6 +66,19 @@ You try to connect (i.e., to deploy) to a local orchestration cluster, and Deskt
 
 Ensure your local orchestration cluster is running. If you don't have one installed, consider [Camunda 8 Run](/self-managed/quickstart/developer-quickstart/c8run.md), a lightweight all-in-one distribution.
 
+## I need a REST connection for some features
+
+You try out [task testing](./task-testing.md) and Desktop Modeler tells you "Configure a REST connection to a Camunda 8 cluster."
+
+Some features of Desktop Modeler, such as [task testing](./task-testing.md), require a REST connection to a Camunda 8 cluster. Most orchestration clusters support both gRPC and REST connections and depending on the provided URL the according protocol will be used. Ensure you use the REST URL in your deployment configuration:
+
+- For Camunda 8 SaaS clusters create an [API client](../../console/manage-clusters/manage-api-clients.md) and use the `Camunda REST API`,
+- if your using c8run you should use the value of `Orchestration Cluster API`
+
+:::tip
+Even if the URL starts with `http://` it may still be a gRPC endpoint, ensure you use the correct URL provided by your orchestration cluster.
+:::
+
 ## Resolve a general Zeebe connection issue
 
 You try to connect to Zeebe from both Desktop Modeler _and_ community-supported [`zbctl`](https://github.com/camunda-community-hub/zeebe-client-go/blob/main/cmd/zbctl/zbctl.md), and neither of them works. General connection failures can have a couple of reasons:
